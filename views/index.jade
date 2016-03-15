@@ -1,0 +1,181 @@
+doctype
+html
+  include head
+  body
+    .container
+      h2 Restaurants API
+      ul(class='list-group')
+        li(class='list-group-item')
+          h4
+            label(class='label label-primary') GET /menus
+          p returns an object with all available menus in the form of:
+          pre {
+            |   "aa8sdw23": {
+            |     uid: "aa8sdw23",
+            |     name: "Breakfast", 
+            |     price: 5,
+            |     list: {}
+            |   },
+            |   "78de8sp9": {
+            |     uid: "78de8sp9",
+            |     name: "Lunch",
+            |     price: 15,
+            |     list: {}
+            |   }
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-success') POST /menus
+          p To create a new menu you can send objects like this:
+          pre {
+            |   name: "list name",
+            |   price: 5
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-warning') PUT /menus/:id
+          p To update a menu you can send objects like this:
+          p(class='text text-info') (only the name can be updated)
+          pre {
+            |   name: "new menu name",
+            |   price: 5
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-danger') DELETE /menus/:id
+          p No need to send extra data, just do a DELETE on the URL
+        li(class='list-group-item')
+          h4
+            label(class='label label-primary') GET /menus/:id/list
+          p returns an object with all entries in the requested menu in the form of:
+          pre {
+            |   "iiu8789x": {
+            |     id: "iiu8789x",
+            |     name: "Tomato and basil omlette", 
+            |     description: "The classic combination of tomato and basil makes this simple omelette really sing"
+            |   },
+            |   "po92xed1": {
+            |     id: "po92xed1",
+            |     name: "Baked eggs", 
+            |     description: "This is such an easy breakfast recipe and you can take it in so many different directions"
+            |   }
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-success') POST /menus/:id/list
+          p To create a new menu entry you can send objects like this:
+          pre {
+            |   name: "menu entry name",
+            |   description: "menu entry description"
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-warning') PUT /menus/:id/list/:lid
+          p To update a menu entry you can send objects like this:
+          p(class='text text-info')
+          pre {
+            |   name: "new menu entry name",
+            |   description: "new menu entry description"
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-danger') DELETE /menus/:id/list/:lid
+          p No need to send extra data, just do a DELETE on the URL
+        li(class='list-group-item')
+          h4
+            label(class='label label-primary') GET /bookings
+          p returns an object with all available bookings in the form of:
+          pre {
+            |   "pp02938s": {
+            |     uid: "pp02938s",
+            |     name: "John Smith", 
+            |     phone: "0700 000 999",
+            |     date: "2015-09-27T09:00:00.148Z",
+            |     seats: 2,
+            |     smokers: 0
+            |   },
+            |   "iwks9281": {
+            |     uid: "iwks9281",
+            |     name: "Peter Gleet", 
+            |     phone: "0804 000 999",
+            |     date: "2015-09-27T10:00:00.148Z",
+            |     seats: 1,
+            |     smokers: 1
+            |   }
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-success') POST /bookings
+            
+          p To create a new booking you can send objects like this:
+          p(class='text text-info') (name, phone, date and seats are mandatory fields; smokers will default to 0 if not provided)
+          pre {
+            |   name: "name of person",
+            |   phone: "contact phone",
+            |   date: "date and time of booking",
+            |   seats: 1,  // number of seats
+            |   smokers: 0 // smokers or non-smokers
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-warning') PUT /bookings/:id
+          p To update a booking you can send objects like this:
+          p(class='text text-info')
+          pre {
+            |   name: "new name for person",
+            |   phone: "new contact phone",
+            |   date: "new date and time of booking",
+            |   seats: 3,  // new number of seats
+            |   smokers: 0 // smokers or non-smokers
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-danger') DELETE /menus/:id
+          p No need to send extra data, just do a DELETE on the URL
+        li(class='list-group-item')
+          h4
+            label(class='label label-primary') GET /stock
+          p returns an object with all available stock in the form of:
+          pre {
+            |   "029eij8m": {
+            |     uid: "029eij8m",
+            |     name: "Drinks",
+            |     supplier: "xCompany",
+            |     phone: "1111 222 333",
+            |     address: "42 Lombului Str, Cluj-Napoca, Romania"
+            |   },
+            |   "29xidq12": {
+            |     uid: "29xidq12",
+            |     name: "Vegetables",
+            |     supplier: "zCompany",
+            |     phone: "5555 546 321",
+            |     address: "3 Fagetului Str, Cluj-Napoca, Romania"
+            |   }
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-success') POST /stock
+            
+          p To create a new stock entry you can send objects like this:
+          p(class='text text-info') (name, phone, supplier and address are mandatory fields)
+          pre {
+            |   name: "name of supplied good",
+            |   supplier: "name of supplying company",
+            |   phone: "phone of supplying company",
+            |   address: "address of supplying company"
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-warning') PUT /stock/:id
+          p To update a stock entry you can send objects like this:
+          p(class='text text-info')
+          pre {
+            |   name: "name of supplied good",
+            |   supplier: "name of supplying company",
+            |   phone: "phone of supplying company",
+            |   address: "address of supplying company"
+            | }
+        li(class='list-group-item')
+          h4
+            label(class='label label-danger') DELETE /stock/:id
+          p No need to send extra data, just do a DELETE on the URL
